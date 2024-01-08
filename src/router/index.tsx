@@ -9,6 +9,8 @@ import MenuManage from "../page/business/menuManage/MenuManage";
 import MenuCreate from "../page/business/menuManage/Create";
 import RoleManage from "../page/business/roleManage/RoleManage";
 import Color from "../page/business/configPage/color/Color";
+import Test from "../page/business/test/Test";
+import TestRouter from "../page/business/test/TestRouter";
 export const GlobalStore = createContext({});
 
 const IndexRouter = () => {
@@ -24,6 +26,7 @@ const IndexRouter = () => {
 const MyRoute = () => {
   const element = useRoutes([
     { path: "*", element: <Navigate to="/home" /> },
+    { path: "/", element: <Navigate to="/home" /> },
     { path: "/login", element: <Login /> },
     {
       path: "/",
@@ -34,6 +37,8 @@ const MyRoute = () => {
         { path: "menuManage/create", element: <MenuCreate /> },
         { path: "roleManage", element: <RoleManage /> },
         { path: "configPage/color", element: <Color /> },
+        { path: "test", element: <Test /> },
+        { path: "testRouter", element: <TestRouter /> },
       ],
     },
   ]);

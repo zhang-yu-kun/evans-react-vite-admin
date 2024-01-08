@@ -11,104 +11,32 @@ export const menuItem = [
     label: "首页",
   },
   {
-    key: "configPage/color",
+    key: "configPage",
     icon: <VideoCameraOutlined />,
-    label: "颜色设置",
+    label: "页面配置",
+    children: [
+      {
+        key: "configPage/color",
+
+        label: "布局颜色",
+      },
+    ],
   },
   {
     key: "3",
     icon: <UploadOutlined />,
-    label: "nav 3",
+    label: "权限管理",
     children: [
-      {
-        key: "menuManage/create",
-
-        label: "新建菜单",
-      },
       {
         key: "menuManage",
 
-        label: "2222",
-      },
-      {
-        key: "menuManage/44444",
-
-        label: "333333",
+        label: "菜单管理",
       },
     ],
   },
   {
-    key: "4",
+    key: "test",
     icon: <UploadOutlined />,
-    label: "nav 3",
-    children: [
-      {
-        key: "menuManage/create",
-
-        label: "新建菜单",
-      },
-      {
-        key: "menuManage",
-
-        label: "2222",
-      },
-      {
-        key: "menuManage/44444",
-
-        label: "333333",
-      },
-    ],
-  },
-  {
-    key: "5",
-    icon: <UploadOutlined />,
-    label: "nav 3",
-    children: [
-      {
-        key: "menuManage/create",
-
-        label: "新建菜单",
-      },
-      {
-        key: "menuManage",
-
-        label: "2222",
-      },
-      {
-        key: "menuManage/44444",
-
-        label: "333333",
-      },
-      {
-        key: "menuManage/5",
-
-        label: "333333",
-      },
-      {
-        key: "menuManage/6",
-
-        label: "333333",
-      },
-      {
-        key: "menuManage/7",
-
-        label: "333333",
-      },
-      {
-        key: "menuManage/8",
-
-        label: "333333",
-      },
-      {
-        key: "menuManage/9",
-
-        label: "333333",
-      },
-      {
-        key: "menuManage/10",
-
-        label: "333333",
-      },
-    ],
+    label: "测试页面",
   },
 ];

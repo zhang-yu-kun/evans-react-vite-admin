@@ -1,11 +1,27 @@
-import { Avatar, List } from "antd";
+import { Avatar } from "antd";
 import classNames from "classnames";
 import { useContext } from "react";
 import { GlobalStore } from "../../../router";
 import style from "./Home.module.scss";
-export default function Home() {
+import OneChart from "./OneChart";
+import ThreeChart from "./ThreeChart";
+import TwoChart from "./TwoChart";
+import { List, Timeline } from "antd";
+import { observer } from "mobx-react-lite";
+function Home() {
   const store: any = useContext(GlobalStore);
-
+  const app = [
+    { title: "apply 1" },
+    { title: "apply 2" },
+    { title: "apply 3" },
+    { title: "apply 4" },
+    { title: "apply 5" },
+    { title: "apply 6" },
+    { title: "apply 7" },
+    { title: "apply 8" },
+    { title: "apply 9" },
+    { title: "apply 10" },
+  ];
   const news = [
     "知之愈明，则行之愈笃;行之愈笃，则知之益明。——朱熹(宋)   ",
     "治大国,若烹小鲜。——老子",
@@ -35,33 +51,76 @@ export default function Home() {
             <p>欢迎来到Evans的工作台</p>
           </div>
           <div className={setClass("part")}>
-            <List
-              header={<p className={style.title}>最新事件</p>}
-              size="small"
-              bordered={false}
-              dataSource={news}
-              renderItem={(item) => <List.Item>{item}</List.Item>}
-            />
+            <p className={style.title}>最新事件</p>
+            <ul>
+              {news.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
           </div>
           <div className={setClass("part")}>
-            <List
-              header={<p className={style.title}>一些消息</p>}
-              size="small"
-              bordered={false}
-              dataSource={news}
-              renderItem={(item) => <List.Item>{item}</List.Item>}
-            />
+            <p className={style.title}>一些消息</p>
+            <ul>
+              {news.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
           </div>
         </div>
         <div className={setClass("main")}>
           <div className={style.part}>
-            <p className={style.title}>图表</p>
+            <p className={style.title}>图表1</p>
+            <div className={style.chart}>
+              <OneChart />
+            </div>
           </div>
-          <div className={style.part}></div>
-          <div className={style.part}></div>
+          <div className={style.part}>
+            <p className={style.title}>图表2</p>
+            <div className={style.chart}>
+              <div className={style.item}>
+                <TwoChart />
+              </div>
+              <div className={style.item}>
+                <ThreeChart />
+              </div>
+            </div>
+          </div>
         </div>
-        <div className={setClass("right")}></div>
+        <div className={setClass("right")}>
+          <div className={style.apply}>
+            <p className={style.title}>应用集</p>
+            <List
+              grid={{ gutter: 12, column: 3 }}
+              dataSource={app}
+              renderItem={(item) => (
+                <List.Item>
+                  <div className={style.app}>{item.title}</div>
+                </List.Item>
+              )}
+            />
+          </div>
+          <div className={style.part}>
+            <p className={style.title}>时间线</p>
+            <Timeline
+              items={[
+                {
+                  children: "Create a services site 2015-09-01",
+                },
+                {
+                  children: "Solve initial network problems 2015-09-01",
+                },
+                {
+                  children: "Technical testing 2015-09-01",
+                },
+                {
+                  children: "Network problems being solved 2015-09-01",
+                },
+              ]}
+            />
+          </div>
+        </div>
       </div>
     </>
   );
 }
+export default observer(Home);

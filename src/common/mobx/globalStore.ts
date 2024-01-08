@@ -11,10 +11,11 @@ class Global {
     // @ts-ignore：
     makeAutoObservable(this, {}, { autobind: true });
   }
-  layout: globalType["layout"] = "back";
+  collapsed: boolean = false; //侧边栏开关
+  layout: globalType["layout"] = "back"; //布局
   themeAlgorithm: globalType["themeAlgorithm"] = "defaultAlgorithm";
-  collapsed: boolean = false;
 
+  /**当前颜色主题  长期使用通过复制对应的theme*/
   currentTheme = {
     bodyBg: "#fafafa",
     themeName: "blue", //颜色名
@@ -39,21 +40,24 @@ class Global {
     this.layout = mode;
   }
 
-  get siderBorder() {
-    if (this.currentTheme.themeName === "dark") {
-      return "#DFDFDF80";
-    }
-    return "#80808080";
-  }
+  /**
+   * 计算得出全部背景颜色
+   */
   get footerColor() {
     if (this.currentTheme.themeName === "dark") {
       return "#fff";
     }
     return "#8a8a8a";
   }
+  /**
+   * 获取当前主题的主题名
+   */
   get themeColor() {
     return this.currentTheme.themeName;
   }
+  /**
+   * 计算暗色或亮色模式
+   */
   get themeStatus() {
     if (this.currentTheme.themeName === "dark") {
       return "dark";
