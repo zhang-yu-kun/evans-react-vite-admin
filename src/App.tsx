@@ -1,8 +1,8 @@
 import { ConfigProvider } from "antd";
 import { observer } from "mobx-react-lite";
 import store from "./common/mobx/globalStore";
-import HeaderLayout from "./page/comporent/HeaderLayout";
-import SiderLayout from "./page/comporent/SiderLayout";
+import HeaderLayout from "./page/component/HeaderLayout";
+import SiderLayout from "./page/component/SiderLayout";
 
 const App: React.FC = () => {
   const { bodyBg, primary, colorBgContainer, MenuBg, MenuHover } =

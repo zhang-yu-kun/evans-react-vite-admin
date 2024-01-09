@@ -25,8 +25,8 @@ const IndexRouter = () => {
 
 const MyRoute = () => {
   const element = useRoutes([
-    { path: "*", element: <Navigate to="/home" /> },
-    { path: "/", element: <Navigate to="/home" /> },
+    { path: "*", element: <Navigate to="/login" /> },
+    { path: "/", element: <Navigate to="/login" /> },
     { path: "/login", element: <Login /> },
     {
       path: "/",
