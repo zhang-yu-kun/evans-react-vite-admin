@@ -4,10 +4,6 @@ import type { themesType } from "./themes";
 type globalType = {
   themeAlgorithm: "defaultAlgorithm" | "darkAlgorithm" | "compactAlgorithm";
   layout: "total" | "back";
-  auth: {
-    name: "user" | "admin" | null;
-    role: "user" | "admin";
-  };
 };
 
 class Global {
@@ -16,10 +12,7 @@ class Global {
     makeAutoObservable(this, {}, { autobind: true });
   }
   /*基础状态 */
-  auth: globalType["auth"] = {
-    name: null,
-    role: "user",
-  };
+
   collapsed: boolean = false; //侧边栏开关
   layout: globalType["layout"] = "back"; //布局
   themeAlgorithm: globalType["themeAlgorithm"] = "defaultAlgorithm";
@@ -32,7 +25,7 @@ class Global {
     PrimaryBorder: "#85C1E9", //主题边框
     colorBgContainer: "#e7e9fd35", //容器颜色
     MenuCorol: "#8a8a8a",
-    MenuBg: "#e7e9fd35", //浅色加透明度
+    MenuBg: "#e7e9fd60", //浅色加透明度
     MenuHover: "#e7e9fd", //浅色
   };
   setCollapsed() {
@@ -47,10 +40,6 @@ class Global {
 
   setLayout(mode: "total" | "back") {
     this.layout = mode;
-  }
-
-  setAuth(obj: globalType["auth"]) {
-    this.auth = obj;
   }
 
   /**

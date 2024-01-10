@@ -33,14 +33,12 @@ function Home() {
     style["home"],
     style[`theme_${store.themeStatus}`]
   );
-  const setClass = (cla: string) => {
-    return classNames(style[cla], style[store.themeColor]);
-  };
+
   return (
     <>
       <div className={baseClass}>
         <div className={style.left}>
-          <div className={setClass("top")}>
+          <div className={style.top}>
             {/*  */}
             <Avatar
               size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
@@ -50,24 +48,24 @@ function Home() {
             </Avatar>
             <p>欢迎来到Evans的工作台</p>
           </div>
-          <div className={setClass("part")}>
+          <div className={style.part}>
             <p className={style.title}>最新事件</p>
             <ul>
-              {news.map((item) => (
-                <li>{item}</li>
+              {news.map((item, index) => (
+                <li key={index}>{item}</li>
               ))}
             </ul>
           </div>
-          <div className={setClass("part")}>
+          <div className={style.part}>
             <p className={style.title}>一些消息</p>
             <ul>
-              {news.map((item) => (
-                <li>{item}</li>
+              {news.map((item, index) => (
+                <li key={index}>{item}</li>
               ))}
             </ul>
           </div>
         </div>
-        <div className={setClass("main")}>
+        <div className={style.main}>
           <div className={style.part}>
             <p className={style.title}>图表1</p>
             <div className={style.chart}>
@@ -86,7 +84,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className={setClass("right")}>
+        <div className={style.right}>
           <div className={style.apply}>
             <p className={style.title}>应用集</p>
             <List

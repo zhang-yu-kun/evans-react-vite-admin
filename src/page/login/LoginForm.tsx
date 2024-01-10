@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
 import { Button, Form, Input, Space } from "antd";
-import style from "./login.module.scss";
-import { useNavigate } from "react-router-dom";
-import { GlobalStore } from "../../router";
 import { observer } from "mobx-react-lite";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import style from "./login.module.scss";
 
 const layout = {
   wrapperCol: { span: 20, offset: 2 },
@@ -14,7 +13,6 @@ const tailLayout = {
 };
 
 const LoginForm: React.FC = () => {
-  const store: any = useContext(GlobalStore);
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
@@ -29,11 +27,9 @@ const LoginForm: React.FC = () => {
   const onFinish = (values: any) => {
     const _isAuth = isAuth(values);
     if (_isAuth) {
-      store.setAuth({
-        name: values.name,
-        role: values.name,
-      });
       localStorage.setItem("token", "90329872168");
+      localStorage.setItem("name", values.name);
+      localStorage.setItem("role", values.name);
 
       navigate("/home");
     } else {

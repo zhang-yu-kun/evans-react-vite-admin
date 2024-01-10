@@ -9,11 +9,26 @@ $radius: 20px;
   height: 30px;
   margin-bottom: 10px;
 }
+.red {
+  background-color: $red;
+}
+.purpel {
+  background-color: $purpel;
+}
+.blue {
+  background-color: $purpel;
+}
+.green {
+  background-color: $green;
+}
+.dark {
+  background-color: $dark;
+}
 
 .home {
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
+  height: 95%;
+
   display: flex;
   .left {
     height: 100%;
@@ -48,21 +63,6 @@ $radius: 20px;
           padding: 8px 12px;
         }
       }
-    }
-    .blue {
-      background: $blue;
-    }
-    .red {
-      background: $red;
-    }
-    .purpel {
-      background: $purpel;
-    }
-    .green {
-      background: $green;
-    }
-    .dark {
-      background: $dark;
     }
   }
   .main {
@@ -119,20 +119,5 @@ $radius: 20px;
       height: 45%;
       flex: 1;
     }
-  }
-  .blue {
-    background: $blue;
-  }
-  .red {
-    background: $red;
-  }
-  .purpel {
-    background: $purpel;
-  }
-  .green {
-    background: $green;
-  }
-  .dark {
-    background: $dark;
   }
 }

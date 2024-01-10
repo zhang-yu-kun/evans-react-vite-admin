@@ -17,7 +17,7 @@ const totalThemes: themesType[] = [
     PrimaryBorder: "#85C1E9", //主题边框
     colorBgContainer: "#e7e9fd35", //容器颜色
     MenuCorol: "#8a8a8a",
-    MenuBg: "#e7e9fd35", //浅色加透明度
+    MenuBg: "#e7e9fd60", //浅色加透明度
     MenuHover: "#e7e9fd", //浅色
   },
   {
@@ -27,7 +27,7 @@ const totalThemes: themesType[] = [
     PrimaryBorder: "#9575cd",
     colorBgContainer: "#ede7f635",
     MenuCorol: "#8a8a8a",
-    MenuBg: "#ede7f635", //浅色加透明度
+    MenuBg: "#ede7f660", //浅色加透明度
     MenuHover: "#ede7f6", //浅色
   },
   {
@@ -37,7 +37,7 @@ const totalThemes: themesType[] = [
     PrimaryBorder: "#85C1E9",
     colorBgContainer: "#ffebee35",
     MenuCorol: "#8a8a8a",
-    MenuBg: "#ffebee35", //浅色加透明度
+    MenuBg: "#ffebee60", //浅色加透明度
     MenuHover: "#ffebee", //浅色
   },
   {
@@ -47,7 +47,7 @@ const totalThemes: themesType[] = [
     PrimaryBorder: "#85C1E9",
     colorBgContainer: "#e8f5e935",
     MenuCorol: "#8a8a8a",
-    MenuBg: "#e8f5e935", //浅色加透明度
+    MenuBg: "#e8f5e960", //浅色加透明度
     MenuHover: "#ef5e9", //浅色
   },
   {

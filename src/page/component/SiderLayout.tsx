@@ -1,26 +1,33 @@
-import { Layout, theme } from "antd";
-import React from "react";
+import { Layout } from "antd";
+import { observer } from "mobx-react-lite";
+import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
+import { GlobalStore } from "../../router";
 import Footer from "./Footer";
 import Sider from "./Sider";
+import UserDrop from "./UserDrop";
 
-const { Content } = Layout;
+const { Content, Header } = Layout;
 
 const SiderLayout: React.FC = () => {
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
+  const store: any = useContext(GlobalStore);
 
   return (
     <Layout style={{ height: "100vh" }}>
       <Sider />
       <Layout>
+        <Header
+          style={{
+            background: store.currentTheme.MenuBg,
+            boxShadow: `6px 2px 6px ${store.currentTheme.MenuHover}`,
+          }}
+        >
+          <UserDrop />
+        </Header>
         <Content
           style={{
             padding: 10,
             minHeight: 280,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
           }}
         >
           <Outlet />
@@ -31,4 +38,4 @@ const SiderLayout: React.FC = () => {
   );
 };
 
-export default SiderLayout;
+export default observer(SiderLayout);
