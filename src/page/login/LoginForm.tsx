@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Form, Input, Space } from "antd";
 import style from "./login.module.scss";
+import { useNavigate } from "react-router-dom";
+import { GlobalStore } from "../../router";
+import { observer } from "mobx-react-lite";
 
 const layout = {
   wrapperCol: { span: 20, offset: 2 },
@@ -11,10 +14,31 @@ const tailLayout = {
 };
 
 const LoginForm: React.FC = () => {
+  const store: any = useContext(GlobalStore);
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
+  const isAuth = (values: any) => {
+    if (values.name === "user") {
+      if (values.password === "user123") return true;
+    } else if (values.name === "admin") {
+      if (values.password === "admin456") return true;
+    }
+    return false;
+  };
   const onFinish = (values: any) => {
-    console.log(values);
+    const _isAuth = isAuth(values);
+    if (_isAuth) {
+      store.setAuth({
+        name: values.name,
+        role: values.name,
+      });
+      localStorage.setItem("token", "90329872168");
+
+      navigate("/home");
+    } else {
+      navigate("/login");
+    }
   };
 
   const onUser = () => {
@@ -72,7 +96,7 @@ const LoginForm: React.FC = () => {
             style={{ width: "100%", display: "flex", justifyContent: "center" }}
           >
             <Button className={style.submit} type="primary" htmlType="submit">
-              Submit
+              登录
             </Button>
           </div>
         </Form.Item>
@@ -81,4 +105,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default observer(LoginForm);

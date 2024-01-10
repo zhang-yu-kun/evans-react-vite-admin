@@ -1,23 +1,25 @@
-import { BrowserRouter, useRoutes, Navigate } from "react-router-dom";
+import { Suspense, createContext, lazy } from "react";
+import { BrowserRouter, Navigate, useRoutes } from "react-router-dom";
 import App from "../App";
-import Login from "../page/login/Login";
-import Home from "../page/business/home/Home";
-
-import { createContext } from "react";
 import store from "../common/mobx/globalStore";
-import MenuManage from "../page/business/menuManage/MenuManage";
-import MenuCreate from "../page/business/menuManage/Create";
-import RoleManage from "../page/business/roleManage/RoleManage";
-import Color from "../page/business/configPage/color/Color";
-import Test from "../page/business/test/Test";
-import TestRouter from "../page/business/test/TestRouter";
+import AuthComp from "./AuthComp";
 export const GlobalStore = createContext({});
 
+const Home = lazy(() => import("../page/business/home/Home"));
+const Login = lazy(() => import("../page/login/Login"));
+const MenuManage = lazy(() => import("../page/business/menuManage/MenuManage"));
+const MenuCreate = lazy(() => import("../page/business/roleManage/RoleManage"));
+const RoleManage = lazy(() => import("../page/business/menuManage/Create"));
+const Color = lazy(() => import("../page/business/configPage/color/Color"));
+const Test = lazy(() => import("../page/business/test/Test"));
+const TestRouter = lazy(() => import("../page/business/test/TestRouter"));
 const IndexRouter = () => {
   return (
     <GlobalStore.Provider value={store}>
       <BrowserRouter>
-        <MyRoute />
+        <Suspense fallback={""}>
+          <MyRoute />
+        </Suspense>
       </BrowserRouter>
     </GlobalStore.Provider>
   );
@@ -25,20 +27,69 @@ const IndexRouter = () => {
 
 const MyRoute = () => {
   const element = useRoutes([
-    { path: "*", element: <Navigate to="/login" /> },
-    { path: "/", element: <Navigate to="/login" /> },
+    { path: "*", element: <Navigate to="/home" /> },
+    { path: "/", element: <Navigate to="/home" /> },
     { path: "/login", element: <Login /> },
     {
       path: "/",
       element: <App />,
       children: [
-        { path: "home", element: <Home /> },
-        { path: "menuManage", element: <MenuManage /> },
-        { path: "menuManage/create", element: <MenuCreate /> },
-        { path: "roleManage", element: <RoleManage /> },
-        { path: "configPage/color", element: <Color /> },
-        { path: "test", element: <Test /> },
-        { path: "testRouter", element: <TestRouter /> },
+        {
+          path: "home",
+          element: (
+            <AuthComp>
+              <Home />
+            </AuthComp>
+          ),
+        },
+        {
+          path: "menuManage",
+          element: (
+            <AuthComp>
+              <MenuManage />
+            </AuthComp>
+          ),
+        },
+        {
+          path: "menuManage/create",
+          element: (
+            <AuthComp>
+              <MenuCreate />
+            </AuthComp>
+          ),
+        },
+        {
+          path: "roleManage",
+          element: (
+            <AuthComp>
+              <RoleManage />
+            </AuthComp>
+          ),
+        },
+        {
+          path: "configPage/color",
+          element: (
+            <AuthComp>
+              <Color />
+            </AuthComp>
+          ),
+        },
+        {
+          path: "test",
+          element: (
+            <AuthComp>
+              <Test />
+            </AuthComp>
+          ),
+        },
+        {
+          path: "testRouter",
+          element: (
+            <AuthComp>
+              <TestRouter />
+            </AuthComp>
+          ),
+        },
       ],
     },
   ]);

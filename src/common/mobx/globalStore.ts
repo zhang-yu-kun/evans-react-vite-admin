@@ -4,6 +4,10 @@ import type { themesType } from "./themes";
 type globalType = {
   themeAlgorithm: "defaultAlgorithm" | "darkAlgorithm" | "compactAlgorithm";
   layout: "total" | "back";
+  auth: {
+    name: "user" | "admin" | null;
+    role: "user" | "admin";
+  };
 };
 
 class Global {
@@ -11,6 +15,11 @@ class Global {
     // @ts-ignore：
     makeAutoObservable(this, {}, { autobind: true });
   }
+  /*基础状态 */
+  auth: globalType["auth"] = {
+    name: null,
+    role: "user",
+  };
   collapsed: boolean = false; //侧边栏开关
   layout: globalType["layout"] = "back"; //布局
   themeAlgorithm: globalType["themeAlgorithm"] = "defaultAlgorithm";
@@ -38,6 +47,10 @@ class Global {
 
   setLayout(mode: "total" | "back") {
     this.layout = mode;
+  }
+
+  setAuth(obj: globalType["auth"]) {
+    this.auth = obj;
   }
 
   /**
