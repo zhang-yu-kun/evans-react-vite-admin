@@ -1,7 +1,7 @@
 {
-  "name": "zyk-template",
-  "private": true,
-  "version": "0.0.0",
+  "name": "evans-template",
+  "private": false,
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite --port 3090",
