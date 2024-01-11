@@ -1,6 +1,8 @@
 import { makeAutoObservable } from "mobx";
 import { totalThemes } from "./themes";
+
 import type { themesType } from "./themes";
+
 type globalType = {
   themeAlgorithm: "defaultAlgorithm" | "darkAlgorithm" | "compactAlgorithm";
   layout: "total" | "back";
@@ -13,7 +15,6 @@ class Global {
   }
   /*基础状态 */
 
-  collapsed: boolean = false; //侧边栏开关
   layout: globalType["layout"] = "back"; //布局
   themeAlgorithm: globalType["themeAlgorithm"] = "defaultAlgorithm";
 
@@ -28,9 +29,49 @@ class Global {
     MenuBg: "#e7e9fd60", //浅色加透明度
     MenuHover: "#e7e9fd", //浅色
   };
-  setCollapsed() {
-    this.collapsed = !this.collapsed;
-  }
+
+  //菜单管理
+  menus = [
+    {
+      key: "home",
+      icon: "GlobalOutlined",
+      label: "首页",
+    },
+    {
+      key: "configPage",
+      icon: "SettingOutlined",
+      label: "页面配置",
+      children: [
+        {
+          key: "configPage/color",
+          label: "布局颜色",
+        },
+      ],
+    },
+    {
+      key: "3",
+      icon: "SafetyOutlined",
+      label: "权限管理",
+      children: [
+        {
+          key: "menuManage",
+          label: "菜单管理",
+        },
+      ],
+    },
+    {
+      key: "test",
+      icon: "ProfileOutlined",
+      label: "测试页面",
+    },
+  ];
+
+  authMenu = {
+    home: ["user", "admin"],
+    "configPage/color": ["user", "admin"],
+    menuManage: ["admin"],
+    test: ["user", "admin"],
+  };
 
   setTheme(color: "blue" | "red" | "purpel" | "green" | "dark") {
     let current: themesType | undefined;

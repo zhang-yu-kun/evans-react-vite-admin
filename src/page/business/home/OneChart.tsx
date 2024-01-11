@@ -2,6 +2,7 @@ import * as echarts from "echarts";
 type EChartsOption = echarts.EChartsOption;
 import { useContext, useEffect, useRef } from "react";
 import { GlobalStore } from "../../../router";
+import { observer } from "mobx-react-lite";
 const OneChart: React.FC = () => {
   const store: any = useContext(GlobalStore);
   const oneChartRef = useRef(null);
@@ -101,4 +102,4 @@ const OneChart: React.FC = () => {
   );
 };
 
-export default OneChart;
+export default observer(OneChart);

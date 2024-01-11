@@ -4,15 +4,15 @@ import App from "../App";
 import store from "../common/mobx/globalStore";
 import AuthComp from "./AuthComp";
 export const GlobalStore = createContext({});
-
+import NotFound from "../page/notFound/NotFound";
 const Home = lazy(() => import("../page/business/home/Home"));
 const Login = lazy(() => import("../page/login/Login"));
 const MenuManage = lazy(() => import("../page/business/menuManage/MenuManage"));
-const MenuCreate = lazy(() => import("../page/business/roleManage/RoleManage"));
-const RoleManage = lazy(() => import("../page/business/menuManage/Create"));
+const MenuCreate = lazy(() => import("../page/business/menuManage/Create"));
 const Color = lazy(() => import("../page/business/configPage/color/Color"));
 const Test = lazy(() => import("../page/business/test/Test"));
 const TestRouter = lazy(() => import("../page/business/test/TestRouter"));
+
 const IndexRouter = () => {
   return (
     <GlobalStore.Provider value={store}>
@@ -30,12 +30,14 @@ const MyRoute = () => {
     { path: "*", element: <Navigate to="/home" /> },
     { path: "/", element: <Navigate to="/home" /> },
     { path: "/login", element: <Login /> },
+    { path: "/404", element: <NotFound /> },
     {
       path: "/",
       element: <App />,
       children: [
         {
           path: "home",
+
           element: (
             <AuthComp>
               <Home />
@@ -58,14 +60,7 @@ const MyRoute = () => {
             </AuthComp>
           ),
         },
-        {
-          path: "roleManage",
-          element: (
-            <AuthComp>
-              <RoleManage />
-            </AuthComp>
-          ),
-        },
+
         {
           path: "configPage/color",
           element: (

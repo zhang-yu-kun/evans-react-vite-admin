@@ -1,6 +1,8 @@
 import * as echarts from "echarts";
 import { useContext, useEffect, useRef } from "react";
 import { GlobalStore } from "../../../router";
+import { observer } from "mobx-react-lite";
+
 type EChartsOption = echarts.EChartsOption;
 const ThreeChart: React.FC = () => {
   const store: any = useContext(GlobalStore);
@@ -56,4 +58,4 @@ const ThreeChart: React.FC = () => {
   );
 };
 
-export default ThreeChart;
+export default observer(ThreeChart);

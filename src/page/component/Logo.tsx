@@ -1,6 +1,8 @@
 import { useContext } from "react";
 
 import { GlobalStore } from "../../router/index";
+import { observer } from "mobx-react-lite";
+
 const Logo = () => {
   const store: any = useContext(GlobalStore);
 
@@ -23,4 +25,4 @@ const Logo = () => {
     </>
   );
 };
-export default Logo;
+export default observer(Logo);
