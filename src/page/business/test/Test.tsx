@@ -9,7 +9,7 @@ const Test = () => {
   };
 
   const clearToken = () => {
-    localStorage.setItem("token", "fff");
+    sessionStorage.setItem("token", "fff");
     navigate("/home");
   };
   return (

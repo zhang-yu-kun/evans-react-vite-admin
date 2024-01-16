@@ -27,9 +27,9 @@ const LoginForm: React.FC = () => {
   const onFinish = (values: any) => {
     const _isAuth = isAuth(values);
     if (_isAuth) {
-      localStorage.setItem("token", "90329872168");
-      localStorage.setItem("name", values.name);
-      localStorage.setItem("role", values.name);
+      sessionStorage.setItem("token", "90329872168");
+      sessionStorage.setItem("name", values.name);
+      sessionStorage.setItem("role", values.name);
 
       navigate("/home");
     } else {

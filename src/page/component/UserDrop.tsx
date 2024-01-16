@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { DownOutlined } from "@ant-design/icons";
 
 const clearToken = () => {
-  localStorage.setItem("token", "fff");
+  sessionStorage.setItem("token", "fff");
 };
 const getNmae = () => {
-  return localStorage.getItem("name");
+  return sessionStorage.getItem("name");
 };
 const items: MenuProps["items"] = [
   {

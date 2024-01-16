@@ -59,7 +59,7 @@ const Asider = () => {
   }
 
   const toPage = (e: any) => {
-    const role: string = localStorage.getItem("role") as string;
+    const role: string = sessionStorage.getItem("role") as string;
     const key: string = e.key;
     const arr: string[] = store.authMenu[key];
     console.log(e);
